@@ -1,3 +1,13 @@
+/*
+ * jQuery AjaxQ - AJAX request queueing for jQuery
+ *
+ * Copyright (c) 2008 Oleg Podolsky (oleg.podolsky@gmail.com)
+ * Licensed under the MIT (MIT-LICENSE.txt) license.
+ *
+ * http://plugins.jquery.com/project/ajaxq
+ * http://code.google.com/p/jquery-ajaxq/
+ */
+
 jQuery.ajaxq = function (queue, options)
 {
 	// Initialize storage for request queues if it's not initialized yet
