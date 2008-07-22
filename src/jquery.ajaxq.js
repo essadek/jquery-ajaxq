@@ -8,59 +8,27 @@ jQuery.ajaxq = function (queue, options)
 	
 	if (typeof options != "undefined") // Request settings are given, enqueue the new request
 	{
-		// Copy the original options, because success and error callbacks are going to be overridden
+		// Copy the original options, because options.complete is going to be overridden
 
 		var optionsCopy = {};
 		for (var o in options) optionsCopy[o] = options[o];
 		options = optionsCopy;
 		
-		// Override success and error callbacks
+		// Override the original callback
 
-		var originalSuccessCallback = options.success;
-		var originalErrorCallback = options.error;
+		var originalCompleteCallback = options.complete;
 
-		options.success = function (data, status)
+		options.complete = function (request, status)
 		{
-			// Dequeue the request that has just finished (succesfully)
+		    // Run the original callback
+			if (originalCompleteCallback) originalCompleteCallback (request, status);
+
+			// Dequeue the request that has just completed
 			document.ajaxq.q[queue].shift ();
 			document.ajaxq.r = null;
 
 			// Run the next request from the queue
 			if (document.ajaxq.q[queue].length > 0) document.ajaxq.r = jQuery.ajax (document.ajaxq.q[queue][0]);
-
-			if (originalSuccessCallback)
-			{
-				try
-				{
-					originalSuccessCallback (data, status);
-				}
-				catch (e)
-				{
-					// Catch callback errors, the queue must not be broken because of them 
-				}
-			}
-		};
-
-		options.error = function (request, status, exception)
-		{
-			// Dequeue the request that has just finished (with an error)
-			document.ajaxq.q[queue].shift ();
-			document.ajaxq.r = null;
-
-			// Run the next request from the queue
-			if (document.ajaxq.q[queue].length > 0) document.ajaxq.r = jQuery.ajax (document.ajaxq.q[queue][0]);
-
-			if (originalErrorCallback)
-			{
-				try
-				{
-					originalErrorCallback (request, status, exception);
-				}
-				catch (e)
-				{
-					// Catch callback errors, the queue must not be broken because of them
-				}
-			}
 		};
 
 		// Enqueue the request
