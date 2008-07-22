@@ -1,6 +1,9 @@
 /*
  * jQuery AjaxQ - AJAX request queueing for jQuery
  *
+ * Version: 0.0.1
+ * Date: July 22, 2008
+ *
  * Copyright (c) 2008 Oleg Podolsky (oleg.podolsky@gmail.com)
  * Licensed under the MIT (MIT-LICENSE.txt) license.
  *
@@ -30,12 +33,12 @@ jQuery.ajaxq = function (queue, options)
 
 		options.complete = function (request, status)
 		{
-		    // Run the original callback
-			if (originalCompleteCallback) originalCompleteCallback (request, status);
-
-			// Dequeue the request that has just completed
+			// Dequeue the current request
 			document.ajaxq.q[queue].shift ();
 			document.ajaxq.r = null;
+			
+			// Run the original callback
+			if (originalCompleteCallback) originalCompleteCallback (request, status);
 
 			// Run the next request from the queue
 			if (document.ajaxq.q[queue].length > 0) document.ajaxq.r = jQuery.ajax (document.ajaxq.q[queue][0]);
