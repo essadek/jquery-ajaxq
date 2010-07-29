@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="24097082-7161-4e2a-83c0-038588aaa7f6" kpf_version="4" name="jquery.ajaxq.kpf">
+<preference-set idref="24097082-7161-4e2a-83c0-038588aaa7f6">
+  <string id="import_exclude_matches">*.*~;*.bak;*.tmp;CVS;.#*;*.pyo;*.pyc;.svn;_svn;*%*;tmp*.html;.DS_Store</string>
+  <string id="import_include_matches"></string>
+  <boolean id="import_live">1</boolean>
+  <boolean id="import_recursive">1</boolean>
+  <string id="import_type">useFolders</string>
+  <string relative="path" id="javascriptExtraPaths">lib</string>
+  <string id="mappedPaths"></string>
+  <string id="perlExtraPaths"></string>
+  <boolean id="perl_lintOption_includeCurrentDirForLinter">0</boolean>
+  <string id="pythonExtraPaths">C:\Program Files\Google App Engine</string>
+</preference-set>
+</project>

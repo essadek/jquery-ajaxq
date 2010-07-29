@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="jquery.ajaxq.test.css"/>
+		<script src="../lib/jspec.js"></script>
+		<script src="../lib/jspec.xhr.js"></script>
+		<script src="../lib/jspec.timers.js"></script>
+		<script src="../lib/jquery.js"></script>
+		<script src="../src/jquery.ajaxq.js"></script>
+		<script>
+			function runTests()
+			{
+				JSpec
+				.exec("jquery.ajaxq.test.spec")
+				.run()
+				.report();
+			}
+		</script>
+	</head>
+	<body class="jspec" onLoad="runTests();">
+		<div id="jspec-top"><h2 id="jspec-title">JSpec <em><script>document.write(JSpec.version)</script></em></h2></div>
+		<div id="jspec"></div>
+		<div id="jspec-bottom"></div>
+	</body>
+</html>
